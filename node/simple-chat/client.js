@@ -1,4 +1,4 @@
-const PROTO_PATH = __dirname + "/protos/hello.proto"
+const PROTO_PATH = __dirname + "/protos/chat.proto"
 const grpc = require("grpc")
 const protoloader  = require("@grpc/proto-loader")
 const readline = require("readline")
@@ -27,8 +27,17 @@ const loop = function(client) {
     let name = "world"
     reader.question("What is your name? ", (answer) => {
         name = answer || name
-        client.hello({name: name}, (err, resp) => {
-            console.log("> ", resp.msg)
+        const call = client.hello({name: name})
+        /*, (err, resp) => {
+            loop(client)
+        })*/
+
+        call.on('data', (resp) => {
+            console.log(resp.msg)
+        })
+
+        call.on('end', () => {
+            console.log('end')
             loop(client)
         })
     })

@@ -1,4 +1,4 @@
-const PROTO_PATH = __dirname + "/protos/hello.proto"
+const PROTO_PATH = __dirname + "/protos/chat.proto"
 const grpc = require("grpc")
 const protoloader  = require("@grpc/proto-loader")
 
@@ -16,17 +16,18 @@ const packageDefinition = protoloader.loadSync(
 const proto = {
     hello: grpc.loadPackageDefinition(packageDefinition).helloworld
 }
-const helloHandler = function(call, callback) {
+const helloHandler = function(call) {
     console.log(">>> Name: ", call.request.name)
     // delay response on 1000 ms
-    setTimeout( () => callback(null, {msg: "Hello " + call.request.name}), 1000)
+    for (let i=0; i<5;i++) {
+        console.log("loop", i)
+        setTimeout( () => {
+            console.log("loop timeout", i) 
+            call.write({msg: "Hello " })
+            if(i==3) call.end()
+        }, 1000*i)
+    }
 }
-
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}   
 
 const main = async function(){
     const server = new grpc.Server()
