@@ -17,16 +17,24 @@ const proto = {
     hello: grpc.loadPackageDefinition(packageDefinition).helloworld
 }
 const helloHandler = function(call) {
-    console.log(">>> Name: ", call.request.name)
+    call.on("data", (resp) => {
+        console.log(resp)
+        call.write({
+            id: "q",
+            name: "a",
+            message: "z"
+        })
+    })
+    //console.log(">>> Name: ", call.request.name)
     // delay response on 1000 ms
-    for (let i=0; i<5;i++) {
+    /*for (let i=0; i<=5;i++) {
         console.log("loop", i)
         setTimeout( () => {
             console.log("loop timeout", i) 
-            call.write({msg: "Hello " })
-            if(i==3) call.end()
+            call.write({message: "Hello " + i})
+            //if(i==3) call.end()
         }, 1000*i)
-    }
+    }*/
 }
 
 const main = async function(){
