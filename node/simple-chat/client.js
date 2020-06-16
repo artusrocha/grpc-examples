@@ -24,22 +24,28 @@ const reader = readline.createInterface({
 })
 
 const loop = function(client) {
-    let name = "world"
+    const id = Math.floor(Math.random() * 999999999999999)
+    let name = "anon-" + Math.floor( Math.random() * 9999999 )
     reader.question("What is your name? ", (answer) => {
         name = answer || name
-        const call = client.hello({name: name})
-        /*, (err, resp) => {
-            loop(client)
-        })*/
+    })
+    
+    const call = client.hello(function(err, resp) {
+        console.log(err);
+        console.log(resp)
+    })
+    call.on('data', (resp) => {
+        console.log(resp.msg)
+    })
+    call.on('end', () => {
+        console.log('end')
+        loop(client)
+    })
 
-        call.on('data', (resp) => {
-            console.log(resp.msg)
-        })
-
-        call.on('end', () => {
-            console.log('end')
-            loop(client)
-        })
+    call.write({
+        id: id,
+        name: name,
+        message: 3131549879876132
     })
 }
 
