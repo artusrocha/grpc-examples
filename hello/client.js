@@ -27,7 +27,7 @@ const unaryStream = (remote) => {
 
 const streamUnary = (remote) => {
     const names = ['Lucas', 'Marcela', 'Alice', 'Artur', 'João']
-    const call = remote.sayHelloForAll(function(err, response) {
+    const call = remote.sayHelloToEveryOne(function(err, response) {
         console.log('# streamUnary # Remote said: ', response.getMsg())
     })
     names.forEach( (name) => {
@@ -40,7 +40,7 @@ const streamUnary = (remote) => {
 
 const streamStream = (remote) => {
     const names = ['Lucas', 'Marcela', 'Alice', 'Artur', 'João']
-    const call = remote.sayHelloForEach()
+    const call = remote.sayHelloToEachOne()
     call.on('data',function(response){
         console.log('# streamStream # Remote said: ', response.getMsg())
     })

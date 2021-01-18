@@ -5,8 +5,8 @@ package hello;
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloResponse) {}
   rpc SayHelloNTimes (HelloRequest) returns (stream HelloResponse) {}
-  rpc SayHelloForAll (stream HelloRequest) returns (HelloResponse) {}
-  rpc SayHelloForEach (stream HelloRequest) returns (stream HelloResponse) {}
+  rpc SayHelloToEveryOne (stream HelloRequest) returns (HelloResponse) {}
+  rpc SayHelloToEachOne (stream HelloRequest) returns (stream HelloResponse) {}
 }
 
 message HelloRequest {

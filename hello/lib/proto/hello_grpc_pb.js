@@ -50,8 +50,8 @@ var GreeterService = exports.GreeterService = {
     responseSerialize: serialize_hello_HelloResponse,
     responseDeserialize: deserialize_hello_HelloResponse,
   },
-  sayHelloForAll: {
-    path: '/hello.Greeter/SayHelloForAll',
+  sayHelloToEveryOne: {
+    path: '/hello.Greeter/SayHelloToEveryOne',
     requestStream: true,
     responseStream: false,
     requestType: lib_proto_hello_pb.HelloRequest,
@@ -61,8 +61,8 @@ var GreeterService = exports.GreeterService = {
     responseSerialize: serialize_hello_HelloResponse,
     responseDeserialize: deserialize_hello_HelloResponse,
   },
-  sayHelloForEach: {
-    path: '/hello.Greeter/SayHelloForEach',
+  sayHelloToEachOne: {
+    path: '/hello.Greeter/SayHelloToEachOne',
     requestStream: true,
     responseStream: true,
     requestType: lib_proto_hello_pb.HelloRequest,

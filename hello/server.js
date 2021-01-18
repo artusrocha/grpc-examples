@@ -24,7 +24,7 @@ const sayHelloNTimes = (call) => {
     call.end()
 }
 
-const sayHelloForAll = (call, callback) => {
+const sayHelloToEveryOne = (call, callback) => {
     const names = []
     call.on('data', (data) => {
       names.push( data.getName() )
@@ -34,7 +34,7 @@ const sayHelloForAll = (call, callback) => {
     })
 }
 
-const sayHelloForEach = (call, callback) => {
+const sayHelloToEachOne = (call, callback) => {
   call.on('data', (data) => {
     call.write( mkResponse( data.getName() ) )
   })
@@ -46,8 +46,8 @@ const main = () => {
     server.addService(services.GreeterService, {
         sayHello: sayHello,
         sayHelloNTimes: sayHelloNTimes,
-        sayHelloForAll: sayHelloForAll,
-        sayHelloForEach: sayHelloForEach
+        sayHelloToEveryOne: sayHelloToEveryOne,
+        sayHelloToEachOne: sayHelloToEachOne
     })
     server.bind('0.0.0.0:'+PORT, grpc.ServerCredentials.createInsecure())
     console.log('starting grpc server on port', PORT)
