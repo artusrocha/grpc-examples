@@ -2,7 +2,7 @@ const messages = require("./lib/proto/hello_pb")
 const services = require("./lib/proto/hello_grpc_pb")
 const grpc = require("grpc")
 
-const PORT = 5000
+const PORT = 6000
 
 const unaryUnary = (remote) => {
     const req = new messages.HelloRequest()
@@ -57,9 +57,9 @@ const main = () => {
         grpc.credentials.createInsecure() )
     
     unaryUnary(remote)
-    unaryStream(remote)
-    streamUnary(remote)    
-    streamStream(remote)
+    setTimeout( () => unaryStream(remote),  100)
+    setTimeout( () => streamUnary(remote),  200)
+    setTimeout( () => streamStream(remote), 300)
 }
 
 main()
