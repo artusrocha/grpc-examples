@@ -1,4 +1,10 @@
+settings.json
+target
 .mvn
+.classpath
+.project
+.settings
+dependency-reduced-pom.xml
 
 # Binaries for programs and plugins
 *.exe
