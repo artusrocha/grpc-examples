@@ -8,9 +8,9 @@ edition = "2018"
 name = "hello-server"
 path = "src/server.rs"
 
-#[[bin]] # Bin to run the HelloWorld gRPC client
-#name = "hello-client"
-#path = "src/client.rs"
+[[bin]] # Bin to run the HelloWorld gRPC client
+name = "hello-client"
+path = "src/client.rs"
 
 [dependencies]
 tonic = "0.4"
@@ -18,5 +18,7 @@ prost = "0.7"
 tokio = { version = "1", features = ["macros"] }
 futures = { version = "0.3", default-features = false, features = ["alloc"] }
 tokio-stream = { version =  "0.1", features = ["net"] }
+async-stream = "0.3"
+
 [build-dependencies]
 tonic-build = "0.4"
