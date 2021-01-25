@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package grpc.experiments.hello;
-//package hello;
 
 service Greeter {
   rpc SayHello (HelloRequest) returns (HelloResponse) {}
