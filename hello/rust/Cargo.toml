@@ -16,6 +16,7 @@ path = "src/server.rs"
 tonic = "0.4"
 prost = "0.7"
 tokio = { version = "1", features = ["macros"] }
-
+futures = { version = "0.3", default-features = false, features = ["alloc"] }
+tokio-stream = { version =  "0.1", features = ["net"] }
 [build-dependencies]
 tonic-build = "0.4"
