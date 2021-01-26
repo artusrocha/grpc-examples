@@ -11,17 +11,17 @@ pub mod hello_world {
 }
 
 
-async fn sayHello(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
+async fn say_hello(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
     let resp = greeter.say_hello(
         Request::new(HelloRequest{
             name: String::from("Epicuro"),
-            times: 0, // this field is not used on sayHello - unaryUnary
+            times: 0, // this field is not used on say_hello - unaryUnary
         })).await?.into_inner();
     println!("{}",resp.msg);
     Ok(())
 }
 
-async fn sayHelloNTimes(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
+async fn say_hello_n_times(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
     let mut resp_n_times = greeter.say_hello_n_times(
         Request::new(HelloRequest{
             name: String::from("Seneca"),
@@ -34,7 +34,7 @@ async fn sayHelloNTimes(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<
     Ok(())
 }
 
-async fn sayHelloToEveryOne(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
+async fn say_hello_to_every_one(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
     let names = vec!["Diogenes", "Zenão", "Marco Aurélio"];
     let x = async_stream::stream! {
         for name in names {
@@ -50,9 +50,10 @@ async fn sayHelloToEveryOne(greeter: &mut GreeterClient<Channel>) -> Result<(), 
         Ok(response) => println!("{}", response.into_inner().msg),
         Err(e) => println!("To Every One ERROR: {:?}", e),
     }
+    Ok(())
 }
 
-async fn sayHelloToEachOne(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
+async fn say_hello_to_each_one(greeter: &mut GreeterClient<Channel>) -> Result<(), Box<dyn Error>> {
     let names = vec!["Diogenes", "Zenão", "Marco Aurélio"];
     let x = async_stream::stream! {
         for name in names {
@@ -77,20 +78,20 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut greeter = GreeterClient::connect(addr).await?;
 
     // unaryUnary
-    println!("{}","unaryUnary - SayHello");
-    sayHello(&mut greeter).await;
+    println!("{}","unaryUnary - say_hello");
+    say_hello(&mut greeter).await?;
 
     // N Times - unaryStream
-    println!("{}","unamryStream - SayHelloNTimes");
-    sayHelloNTimes(&mut greeter).await;
+    println!("{}","unamryStream - say_hello_n_times");
+    say_hello_n_times(&mut greeter).await?;
 
     // To Every One - streamUnary
-    println!("{}","streamUnary - SayHelloToEveryOne");
-    sayHelloToEveryOne(&mut greeter).await;
+    println!("{}","streamUnary - say_hello_to_every_one");
+    say_hello_to_every_one(&mut greeter).await?;
 
     // To Each One - streamStream
-    println!("{}","streamStream - SayHelloToEachOne");
-    sayHelloToEachOne(&mut greeter).await;
+    println!("{}","streamStream - say_hello_to_each_one");
+    say_hello_to_each_one(&mut greeter).await?;
     
     Ok(())
 }
