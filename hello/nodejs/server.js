@@ -2,7 +2,8 @@ const messages = require("./lib/proto/hello_pb")
 const services = require("./lib/proto/hello_grpc_pb")
 const grpc = require("grpc")
 
-const PORT = 5000
+const argv = require("./lib/server_args.js")
+const PORT = argv.port
 
 const mkResponse = (who) => {
     const resp = new messages.HelloResponse()
@@ -11,11 +12,13 @@ const mkResponse = (who) => {
 }
 
 const sayHello = (call, callback) => {
+    console.log("sayHello # Port: ", PORT)
     const resp = mkResponse( call.request.getName() )
     callback(null, resp)
 }
 
 const sayHelloNTimes = (call) => {
+    console.log("sayHelloNTimes # Port: ", PORT)
     const times = call.request.getTimes()
     for(let i=0; i<times; i++) {
       const resp = mkResponse( call.request.getName() )
@@ -25,6 +28,7 @@ const sayHelloNTimes = (call) => {
 }
 
 const sayHelloToEveryOne = (call, callback) => {
+    console.log("sayHelloToEveryOne # Port: ", PORT)
     const names = []
     call.on('data', (data) => {
       names.push( data.getName() )
@@ -35,6 +39,7 @@ const sayHelloToEveryOne = (call, callback) => {
 }
 
 const sayHelloToEachOne = (call, callback) => {
+  console.log("sayHelloToEachOne # Port: ", PORT)
   call.on('data', (data) => {
     call.write( mkResponse( data.getName() ) )
   })
