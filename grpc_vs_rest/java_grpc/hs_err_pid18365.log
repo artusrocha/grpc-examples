@@ -1,0 +1,781 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGBUS (0x7) at pc=0x00007f661cc6bb26, pid=18365, tid=0x00007f65f81d7640
+#
+# JRE version: OpenJDK Runtime Environment (8.0_275-b01) (build 1.8.0_275-b01)
+# Java VM: OpenJDK 64-Bit Server VM (25.275-b01 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libzip.so+0x4b26]
+#
+# Core dump written. Default location: /home/artus/Projects/grpc-experiments/grpc_vs_rest/java_grpc/core or core.18365
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f65d009c000):  JavaThread "grpc-nio-worker-ELG-3-2" daemon [_thread_in_native, id=18939, stack(0x00007f65f80d7000,0x00007f65f81d8000)]
+
+siginfo: si_signo: 7 (SIGBUS), si_code: 2 (BUS_ADRERR), si_addr: 0x00007f65f8a69b7f
+
+Registers:
+RAX=0x00007f65c8004330, RBX=0x00007f66180ec3c0, RCX=0x0000000000000000, RDX=0x0000000000000000
+RSP=0x00007f65f81d3680, RBP=0x00007f65f81d36e0, RSI=0x0000000000000013, RDI=0x0000000000000048
+R8 =0x00007f65c8004330, R9 =0x00007f65f8a69b61, R10=0x00007f6609166318, R11=0x0000000000000246
+R12=0x00007f66180e69a0, R13=0x00000000009f7b61, R14=0x00007f65f8a69b61, R15=0x00007f65c8004330
+RIP=0x00007f661cc6bb26, EFLAGS=0x0000000000010202, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f65f81d3680)
+0x00007f65f81d3680:   0000000000000003 00000000ffffffff
+0x00007f65f81d3690:   00007f6618055750 00007f65f81d36f0
+0x00007f65f81d36a0:   00007f6500000000 00007f661d7f2382
+0x00007f65f81d36b0:   0000000000000001 00007f66180ec3c0
+0x00007f65f81d36c0:   000000000000003c 00000000f262a466
+0x00007f65f81d36d0:   00007f65c4099340 00007f66180e69a0
+0x00007f65f81d36e0:   00007f65f81d3730 00007f661cc6d34d
+0x00007f65f81d36f0:   0000003c01773a78 00007f65f81d3750
+0x00007f65f81d3700:   00007f65d009c000 0000000000000001
+0x00007f65f81d3710:   000000000000003c 00007f65f81d3750
+0x00007f65f81d3720:   00007f66180e69a0 00007f65d009c250
+0x00007f65f81d3730:   00007f65f81d3b90 00007f661cc6b276
+0x00007f65f81d3740:   00007f6608773a78 00007f65f81d3ba8
+0x00007f65f81d3750:   797474656e2f6f69 65522f6c6974752f
+0x00007f65f81d3760:   654c656372756f73 7463657465446b61
+0x00007f65f81d3770:   756166654424726f 72756f736552746c
+0x00007f65f81d3780:   632e6b61654c6563 00007f007373616c
+0x00007f65f81d3790:   00007f65f81d37d0 00007f661d521af4
+0x00007f65f81d37a0:   0000000000000000 00007f65f81d38e0
+0x00007f65f81d37b0:   0000000000000000 0000000000000014
+0x00007f65f81d37c0:   00007f65d006ddd0 00007f6618055750
+0x00007f65f81d37d0:   00007f65f81d3860 00007f661d9008fd
+0x00007f65f81d37e0:   0000000000000000 0000ffff00001fa0
+0x00007f65f81d37f0:   0000000000000000 0000000000000000
+0x00007f65f81d3800:   0000000000000000 00007f661d1baac0
+0x00007f65f81d3810:   00007f6608773a78 00007f65d009c000
+0x00007f65f81d3820:   00007f6608773a78 00007f65d009c000
+0x00007f65f81d3830:   0000000000000000 00007f6608773a78
+0x00007f65f81d3840:   00007f65f81d38f0 00007f6618055750
+0x00007f65f81d3850:   00007f65d006ddd0 00007f65d009c000
+0x00007f65f81d3860:   00007f65f81d3950 00007f661d560c5d
+0x00007f65f81d3870:   0000000000000000 00007f65d009c000 
+
+Instructions: (pc=0x00007f661cc6bb26)
+0x00007f661cc6bb06:   24 48 49 8b 7c 24 10 b9 a0 00 00 00 4c 89 ea e8
+0x00007f661cc6bb16:   a6 fe ff ff 49 89 c6 4d 85 f6 0f 84 4a 03 00 00
+0x00007f661cc6bb26:   41 0f b7 46 1e 41 0f b7 5e 1c 48 c7 45 c8 00 00
+0x00007f661cc6bb36:   00 00 66 89 45 ba 49 89 dd 89 45 c4 41 0f b7 46 
+
+Register to memory mapping:
+
+RAX=0x00007f65c8004330 is an unknown value
+RBX=0x00007f66180ec3c0 is an unknown value
+RCX=0x0000000000000000 is an unknown value
+RDX=0x0000000000000000 is an unknown value
+RSP=0x00007f65f81d3680 is pointing into the stack for thread: 0x00007f65d009c000
+RBP=0x00007f65f81d36e0 is pointing into the stack for thread: 0x00007f65d009c000
+RSI=0x0000000000000013 is an unknown value
+RDI=0x0000000000000048 is an unknown value
+R8 =0x00007f65c8004330 is an unknown value
+R9 =0x00007f65f8a69b61 is an unknown value
+R10=0x00007f6609166318 is at entry_point+88 in (nmethod*)0x00007f6609166150
+R11=0x0000000000000246 is an unknown value
+R12=0x00007f66180e69a0 is an unknown value
+R13=0x00000000009f7b61 is an unknown value
+R14=0x00007f65f8a69b61 is an unknown value
+R15=0x00007f65c8004330 is an unknown value
+
+
+Stack: [0x00007f65f80d7000,0x00007f65f81d8000],  sp=0x00007f65f81d3680,  free space=1009k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libzip.so+0x4b26]
+C  [libzip.so+0x634d]
+C  [libzip.so+0x4276]  Java_java_util_zip_ZipFile_getEntry+0x86
+J 180  java.util.zip.ZipFile.getEntry(J[BZ)J (0 bytes) @ 0x00007f660916638e [0x00007f66091662c0+0xce]
+J 237 C1 java.util.zip.ZipFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry; (101 bytes) @ 0x00007f6609194c0c [0x00007f66091949a0+0x26c]
+J 203 C1 java.util.jar.JarFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry; (22 bytes) @ 0x00007f6609177ba4 [0x00007f6609177b20+0x84]
+J 331 C2 sun.misc.URLClassPath$JarLoader.getResource(Ljava/lang/String;Z)Lsun/misc/Resource; (85 bytes) @ 0x00007f66091dbe44 [0x00007f66091dbba0+0x2a4]
+J 129 C1 sun.misc.URLClassPath.getResource(Ljava/lang/String;Z)Lsun/misc/Resource; (83 bytes) @ 0x00007f66091566ac [0x00007f6609156540+0x16c]
+J 184 C1 java.net.URLClassLoader$1.run()Ljava/lang/Class; (63 bytes) @ 0x00007f660916ddac [0x00007f660916dba0+0x20c]
+J 183 C1 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007f660916d80c [0x00007f660916d780+0x8c]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x67b89e]
+V  [libjvm.so+0x732839]  JVM_DoPrivileged+0x2b9
+J 132  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007f6609156215 [0x00007f6609156140+0xd5]
+J 181 C1 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007f660916cb84 [0x00007f660916ca00+0x184]
+J 110 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x00007f660914641c [0x00007f6609145ac0+0x95c]
+J 238 C1 sun.misc.Launcher$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (85 bytes) @ 0x00007f6609196bfc [0x00007f6609196280+0x97c]
+J 216 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007f6609183344 [0x00007f6609183240+0x104]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x67b89e]
+V  [libjvm.so+0x6791b8]
+V  [libjvm.so+0x6797e4]
+V  [libjvm.so+0xa67f78]
+V  [libjvm.so+0xa68a0f]
+V  [libjvm.so+0xa6a7b3]
+V  [libjvm.so+0x4d0808]
+V  [libjvm.so+0x66b428]
+j  io.netty.util.ResourceLeakDetector.track0(Ljava/lang/Object;)Lio/netty/util/ResourceLeakDetector$DefaultResourceLeak;+43
+j  io.netty.util.ResourceLeakDetector.track(Ljava/lang/Object;)Lio/netty/util/ResourceLeakTracker;+2
+j  io.netty.buffer.AbstractByteBufAllocator.toLeakAwareBuffer(Lio/netty/buffer/ByteBuf;)Lio/netty/buffer/ByteBuf;+40
+j  io.netty.buffer.PooledByteBufAllocator.newDirectBuffer(II)Lio/netty/buffer/ByteBuf;+64
+j  io.netty.buffer.AbstractByteBufAllocator.directBuffer(II)Lio/netty/buffer/ByteBuf;+21
+j  io.netty.buffer.AbstractByteBufAllocator.directBuffer(I)Lio/netty/buffer/ByteBuf;+4
+j  io.netty.buffer.AbstractByteBufAllocator.buffer(I)Lio/netty/buffer/ByteBuf;+9
+j  io.netty.handler.codec.http2.DefaultHttp2FrameWriter.writeHeadersInternal(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZZISZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+185
+j  io.netty.handler.codec.http2.DefaultHttp2FrameWriter.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+14
+j  io.netty.handler.codec.http2.Http2OutboundFrameLogger.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+30
+j  io.netty.handler.codec.http2.DecoratingHttp2FrameWriter.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+13
+j  io.grpc.netty.NettyServerHandler$WriteMonitoringFrameWriter.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+17
+j  io.netty.handler.codec.http2.DefaultHttp2ConnectionEncoder.sendHeaders(Lio/netty/handler/codec/http2/Http2FrameWriter;Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;ZISZIZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+37
+j  io.netty.handler.codec.http2.DefaultHttp2ConnectionEncoder.access$400(Lio/netty/handler/codec/http2/Http2FrameWriter;Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;ZISZIZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+18
+j  io.netty.handler.codec.http2.DefaultHttp2ConnectionEncoder$FlowControlledHeaders.write(Lio/netty/channel/ChannelHandlerContext;I)V+88
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController$FlowState.writeAllocatedBytes(I)I+106
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController$WritabilityMonitor.write(Lio/netty/handler/codec/http2/Http2Stream;I)V+9
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor$State.write(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;)V+27
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor.distribute(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;Lio/netty/handler/codec/http2/WeightedFairQueueByteDistributor$State;)I+21
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor.distributeToChildren(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;Lio/netty/handler/codec/http2/WeightedFairQueueByteDistributor$State;)I+174
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor.distribute(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;)Z+28
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController$WritabilityMonitor.writePendingBytes()V+30
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController.writePendingBytes()V+4
+j  io.netty.handler.codec.http2.Http2ConnectionHandler.flush(Lio/netty/channel/ChannelHandlerContext;)V+9
+j  io.netty.channel.AbstractChannelHandlerContext.invokeFlush0()V+8
+j  io.netty.channel.AbstractChannelHandlerContext.invokeFlush()V+8
+j  io.netty.channel.AbstractChannelHandlerContext.flush()Lio/netty/channel/ChannelHandlerContext;+22
+j  io.netty.channel.DefaultChannelPipeline.flush()Lio/netty/channel/ChannelPipeline;+4
+j  io.netty.channel.AbstractChannel.flush()Lio/netty/channel/Channel;+4
+j  io.grpc.netty.WriteQueue.flush()V+103
+j  io.grpc.netty.WriteQueue.access$000(Lio/grpc/netty/WriteQueue;)V+1
+j  io.grpc.netty.WriteQueue$1.run()V+4
+j  io.netty.util.concurrent.AbstractEventExecutor.safeExecute(Ljava/lang/Runnable;)V+1
+j  io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(J)Z+41
+j  io.netty.channel.nio.NioEventLoop.run()V+265
+j  io.netty.util.concurrent.SingleThreadEventExecutor$4.run()V+44
+j  io.netty.util.internal.ThreadExecutorMap$2.run()V+11
+j  io.netty.util.concurrent.FastThreadLocalRunnable.run()V+4
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x67b89e]
+V  [libjvm.so+0x6791b8]
+V  [libjvm.so+0x67974d]
+V  [libjvm.so+0x72081f]
+V  [libjvm.so+0xa9b8c6]
+V  [libjvm.so+0x9468e2]
+C  [libpthread.so.0+0x93e9]  start_thread+0xe9
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 180  java.util.zip.ZipFile.getEntry(J[BZ)J (0 bytes) @ 0x00007f6609166318 [0x00007f66091662c0+0x58]
+J 237 C1 java.util.zip.ZipFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry; (101 bytes) @ 0x00007f6609194c0c [0x00007f66091949a0+0x26c]
+J 203 C1 java.util.jar.JarFile.getEntry(Ljava/lang/String;)Ljava/util/zip/ZipEntry; (22 bytes) @ 0x00007f6609177ba4 [0x00007f6609177b20+0x84]
+J 331 C2 sun.misc.URLClassPath$JarLoader.getResource(Ljava/lang/String;Z)Lsun/misc/Resource; (85 bytes) @ 0x00007f66091dbe44 [0x00007f66091dbba0+0x2a4]
+J 129 C1 sun.misc.URLClassPath.getResource(Ljava/lang/String;Z)Lsun/misc/Resource; (83 bytes) @ 0x00007f66091566ac [0x00007f6609156540+0x16c]
+J 184 C1 java.net.URLClassLoader$1.run()Ljava/lang/Class; (63 bytes) @ 0x00007f660916ddac [0x00007f660916dba0+0x20c]
+J 183 C1 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007f660916d80c [0x00007f660916d780+0x8c]
+v  ~StubRoutines::call_stub
+J 132  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007f66091561a3 [0x00007f6609156140+0x63]
+J 181 C1 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007f660916cb84 [0x00007f660916ca00+0x184]
+J 110 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x00007f660914641c [0x00007f6609145ac0+0x95c]
+J 238 C1 sun.misc.Launcher$AppClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (85 bytes) @ 0x00007f6609196bfc [0x00007f6609196280+0x97c]
+J 216 C1 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007f6609183344 [0x00007f6609183240+0x104]
+v  ~StubRoutines::call_stub
+j  io.netty.util.ResourceLeakDetector.track0(Ljava/lang/Object;)Lio/netty/util/ResourceLeakDetector$DefaultResourceLeak;+43
+j  io.netty.util.ResourceLeakDetector.track(Ljava/lang/Object;)Lio/netty/util/ResourceLeakTracker;+2
+j  io.netty.buffer.AbstractByteBufAllocator.toLeakAwareBuffer(Lio/netty/buffer/ByteBuf;)Lio/netty/buffer/ByteBuf;+40
+j  io.netty.buffer.PooledByteBufAllocator.newDirectBuffer(II)Lio/netty/buffer/ByteBuf;+64
+j  io.netty.buffer.AbstractByteBufAllocator.directBuffer(II)Lio/netty/buffer/ByteBuf;+21
+j  io.netty.buffer.AbstractByteBufAllocator.directBuffer(I)Lio/netty/buffer/ByteBuf;+4
+j  io.netty.buffer.AbstractByteBufAllocator.buffer(I)Lio/netty/buffer/ByteBuf;+9
+j  io.netty.handler.codec.http2.DefaultHttp2FrameWriter.writeHeadersInternal(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZZISZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+185
+j  io.netty.handler.codec.http2.DefaultHttp2FrameWriter.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+14
+j  io.netty.handler.codec.http2.Http2OutboundFrameLogger.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+30
+j  io.netty.handler.codec.http2.DecoratingHttp2FrameWriter.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+13
+j  io.grpc.netty.NettyServerHandler$WriteMonitoringFrameWriter.writeHeaders(Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;IZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+17
+j  io.netty.handler.codec.http2.DefaultHttp2ConnectionEncoder.sendHeaders(Lio/netty/handler/codec/http2/Http2FrameWriter;Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;ZISZIZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+37
+j  io.netty.handler.codec.http2.DefaultHttp2ConnectionEncoder.access$400(Lio/netty/handler/codec/http2/Http2FrameWriter;Lio/netty/channel/ChannelHandlerContext;ILio/netty/handler/codec/http2/Http2Headers;ZISZIZLio/netty/channel/ChannelPromise;)Lio/netty/channel/ChannelFuture;+18
+j  io.netty.handler.codec.http2.DefaultHttp2ConnectionEncoder$FlowControlledHeaders.write(Lio/netty/channel/ChannelHandlerContext;I)V+88
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController$FlowState.writeAllocatedBytes(I)I+106
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController$WritabilityMonitor.write(Lio/netty/handler/codec/http2/Http2Stream;I)V+9
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor$State.write(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;)V+27
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor.distribute(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;Lio/netty/handler/codec/http2/WeightedFairQueueByteDistributor$State;)I+21
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor.distributeToChildren(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;Lio/netty/handler/codec/http2/WeightedFairQueueByteDistributor$State;)I+174
+j  io.netty.handler.codec.http2.WeightedFairQueueByteDistributor.distribute(ILio/netty/handler/codec/http2/StreamByteDistributor$Writer;)Z+28
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController$WritabilityMonitor.writePendingBytes()V+30
+j  io.netty.handler.codec.http2.DefaultHttp2RemoteFlowController.writePendingBytes()V+4
+j  io.netty.handler.codec.http2.Http2ConnectionHandler.flush(Lio/netty/channel/ChannelHandlerContext;)V+9
+j  io.netty.channel.AbstractChannelHandlerContext.invokeFlush0()V+8
+j  io.netty.channel.AbstractChannelHandlerContext.invokeFlush()V+8
+j  io.netty.channel.AbstractChannelHandlerContext.flush()Lio/netty/channel/ChannelHandlerContext;+22
+j  io.netty.channel.DefaultChannelPipeline.flush()Lio/netty/channel/ChannelPipeline;+4
+j  io.netty.channel.AbstractChannel.flush()Lio/netty/channel/Channel;+4
+j  io.grpc.netty.WriteQueue.flush()V+103
+j  io.grpc.netty.WriteQueue.access$000(Lio/grpc/netty/WriteQueue;)V+1
+j  io.grpc.netty.WriteQueue$1.run()V+4
+j  io.netty.util.concurrent.AbstractEventExecutor.safeExecute(Ljava/lang/Runnable;)V+1
+j  io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(J)Z+41
+j  io.netty.channel.nio.NioEventLoop.run()V+265
+j  io.netty.util.concurrent.SingleThreadEventExecutor$4.run()V+44
+j  io.netty.util.internal.ThreadExecutorMap$2.run()V+11
+j  io.netty.util.concurrent.FastThreadLocalRunnable.run()V+4
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f65c8014800 JavaThread "grpc-default-executor-1" daemon [_thread_blocked, id=18940, stack(0x00007f65c3afd000,0x00007f65c3bfe000)]
+=>0x00007f65d009c000 JavaThread "grpc-nio-worker-ELG-3-2" daemon [_thread_in_native, id=18939, stack(0x00007f65f80d7000,0x00007f65f81d8000)]
+  0x00007f65d00b3800 JavaThread "grpc-nio-worker-ELG-3-1" daemon [_thread_in_native, id=18409, stack(0x00007f65f85d9000,0x00007f65f86da000)]
+  0x00007f66183ed800 JavaThread "grpc-nio-boss-ELG-1-1" daemon [_thread_in_native, id=18380, stack(0x00007f65f88da000,0x00007f65f89db000)]
+  0x00007f66180cf000 JavaThread "Service Thread" daemon [_thread_blocked, id=18378, stack(0x00007f65f8bf3000,0x00007f65f8cf4000)]
+  0x00007f66180c1800 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=18377, stack(0x00007f65f8cf5000,0x00007f65f8df5000)]
+  0x00007f66180c0000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=18376, stack(0x00007f65f8df6000,0x00007f65f8ef6000)]
+  0x00007f66180bd000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=18375, stack(0x00007f65f8ef7000,0x00007f65f8ff7000)]
+  0x00007f66180b7800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=18374, stack(0x00007f65f8ff7000,0x00007f65f90f8000)]
+  0x00007f6618086000 JavaThread "Finalizer" daemon [_thread_blocked, id=18373, stack(0x00007f65f93e0000,0x00007f65f94e1000)]
+  0x00007f6618081800 JavaThread "Reference Handler" daemon [_thread_blocked, id=18372, stack(0x00007f65f94e1000,0x00007f65f95e2000)]
+  0x00007f661800a800 JavaThread "main" [_thread_blocked, id=18366, stack(0x00007f661ccab000,0x00007f661cdab000)]
+
+Other Threads:
+  0x00007f6618078000 VMThread [stack: 0x00007f65f95e3000,0x00007f65f96e3000] [id=18371]
+  0x00007f66180d1800 WatcherThread [stack: 0x00007f65f8af3000,0x00007f65f8bf3000] [id=18379]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000000c4600000, size: 954 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+Heap:
+ PSYoungGen      total 17920K, used 14545K [0x00000000ec200000, 0x00000000ed600000, 0x0000000100000000)
+  eden space 15360K, 78% used [0x00000000ec200000,0x00000000ecdb7da8,0x00000000ed100000)
+  from space 2560K, 99% used [0x00000000ed100000,0x00000000ed37c9d0,0x00000000ed380000)
+  to   space 2560K, 0% used [0x00000000ed380000,0x00000000ed380000,0x00000000ed600000)
+ ParOldGen       total 40960K, used 2315K [0x00000000c4600000, 0x00000000c6e00000, 0x00000000ec200000)
+  object space 40960K, 5% used [0x00000000c4600000,0x00000000c4842eb0,0x00000000c6e00000)
+ Metaspace       used 13065K, capacity 13338K, committed 13568K, reserved 1060864K
+  class space    used 1615K, capacity 1695K, committed 1792K, reserved 1048576K
+
+Card table byte_map: [0x00007f661c6c9000,0x00007f661c8a7000] byte_map_base: 0x00007f661c0a6000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f661dcadf40
+ Begin Bits: [0x00007f65fa230000, 0x00007f65fb118000)
+ End Bits:   [0x00007f65fb118000, 0x00007f65fc000000)
+
+Polling page: 0x00007f661def7000
+
+CodeCache: size=245760Kb used=2605Kb max_used=2605Kb free=243155Kb
+ bounds [0x00007f6609000000, 0x00007f6609290000, 0x00007f6618000000]
+ total_blobs=1081 nmethods=690 adapters=305
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 196,801 Thread 0x00007f66180c1800 nmethod 681 0x00007f6609287210 code [0x00007f6609287360, 0x00007f6609287470]
+Event: 196,802 Thread 0x00007f66180c1800  682       3       io.grpc.netty.GrpcHttp2HeadersUtils$GrpcHttp2InboundHeaders::requireAsciiString (45 bytes)
+Event: 196,803 Thread 0x00007f66180c1800 nmethod 682 0x00007f66092874d0 code [0x00007f66092876e0, 0x00007f66092882e8]
+Event: 196,803 Thread 0x00007f66180c1800  683       1       io.netty.handler.codec.http2.DefaultHttp2Connection$DefaultStream::id (5 bytes)
+Event: 196,803 Thread 0x00007f66180c1800 nmethod 683 0x00007f6609288750 code [0x00007f66092888a0, 0x00007f66092889b0]
+Event: 196,803 Thread 0x00007f66180c1800  684       3       io.netty.util.collection.IntObjectHashMap::hashIndex (10 bytes)
+Event: 196,803 Thread 0x00007f66180c1800 nmethod 684 0x00007f6609288a10 code [0x00007f6609288b80, 0x00007f6609288d30]
+Event: 196,803 Thread 0x00007f66180c1800  685       3       io.netty.util.collection.IntObjectHashMap::hashCode (2 bytes)
+Event: 196,803 Thread 0x00007f66180c1800 nmethod 685 0x00007f6609288dd0 code [0x00007f6609288f20, 0x00007f6609289050]
+Event: 196,804 Thread 0x00007f66180c1800  686       3       io.netty.channel.AbstractChannelHandlerContext::findContextOutbound (25 bytes)
+
+GC Heap History (2 events):
+Event: 5,758 GC heap before
+{Heap before GC invocations=1 (full 0):
+ PSYoungGen      total 17920K, used 15360K [0x00000000ec200000, 0x00000000ed600000, 0x0000000100000000)
+  eden space 15360K, 100% used [0x00000000ec200000,0x00000000ed100000,0x00000000ed100000)
+  from space 2560K, 0% used [0x00000000ed380000,0x00000000ed380000,0x00000000ed600000)
+  to   space 2560K, 0% used [0x00000000ed100000,0x00000000ed100000,0x00000000ed380000)
+ ParOldGen       total 40960K, used 0K [0x00000000c4600000, 0x00000000c6e00000, 0x00000000ec200000)
+  object space 40960K, 0% used [0x00000000c4600000,0x00000000c4600000,0x00000000c6e00000)
+ Metaspace       used 9645K, capacity 9836K, committed 9984K, reserved 1058816K
+  class space    used 1177K, capacity 1244K, committed 1280K, reserved 1048576K
+Event: 5,763 GC heap after
+Heap after GC invocations=1 (full 0):
+ PSYoungGen      total 17920K, used 2546K [0x00000000ec200000, 0x00000000ed600000, 0x0000000100000000)
+  eden space 15360K, 0% used [0x00000000ec200000,0x00000000ec200000,0x00000000ed100000)
+  from space 2560K, 99% used [0x00000000ed100000,0x00000000ed37c9d0,0x00000000ed380000)
+  to   space 2560K, 0% used [0x00000000ed380000,0x00000000ed380000,0x00000000ed600000)
+ ParOldGen       total 40960K, used 2315K [0x00000000c4600000, 0x00000000c6e00000, 0x00000000ec200000)
+  object space 40960K, 5% used [0x00000000c4600000,0x00000000c4842eb0,0x00000000c6e00000)
+ Metaspace       used 9645K, capacity 9836K, committed 9984K, reserved 1058816K
+  class space    used 1177K, capacity 1244K, committed 1280K, reserved 1048576K
+}
+
+Deoptimization events (2 events):
+Event: 0,334 Thread 0x00007f661800a800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f660918f0e4 method=java.lang.String.indexOf([CII[CIII)I @ 134
+Event: 196,753 Thread 0x00007f65c8014800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6609191d98 method=sun.nio.cs.UTF_8$Encoder.encode([CII[B)I @ 33
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 0,088 Thread 0x00007f661800a800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ec2fcdf0) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/jvm.cpp, line 1521]
+Event: 0,088 Thread 0x00007f661800a800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ec2fd000) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/jvm.cpp, line 1521]
+Event: 0,088 Thread 0x00007f661800a800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ec2ff4c0) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/jvm.cpp, line 1521]
+Event: 0,088 Thread 0x00007f661800a800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000ec2ff6d0) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/jvm.cpp, line 1521]
+Event: 0,125 Thread 0x00007f661800a800 Exception <a 'java/lang/NoClassDefFoundError': org/slf4j/LoggerFactory> (0x00000000ec488cf8) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 206]
+Event: 0,126 Thread 0x00007f661800a800 Exception <a 'java/lang/NoClassDefFoundError': org/apache/logging/log4j/spi/ExtendedLoggerWrapper> (0x00000000ec491b40) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 206]
+Event: 0,126 Thread 0x00007f661800a800 Exception <a 'java/lang/NoClassDefFoundError'> (0x00000000ec491b40) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/jvm.cpp, line 1527]
+Event: 0,126 Thread 0x00007f661800a800 Exception <a 'java/lang/NoClassDefFoundError': org/apache/log4j/Priority> (0x00000000ec49b278) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 206]
+Event: 5,767 Thread 0x00007f66183ed800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000ec233a78) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/methodHandles.cpp, line 1169]
+Event: 5,769 Thread 0x00007f66183ed800 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x00000000ec241168) thrown at [/build/java8-openjdk/src/jdk8u-jdk8u275-b01/hotspot/src/share/vm/prims/methodHandles.cpp, line 1169]
+
+Events (10 events):
+Event: 196,794 Executing VM operation: RevokeBias
+Event: 196,794 Executing VM operation: RevokeBias done
+Event: 196,799 Executing VM operation: RevokeBias
+Event: 196,799 Executing VM operation: RevokeBias done
+Event: 196,801 Executing VM operation: RevokeBias
+Event: 196,801 Executing VM operation: RevokeBias done
+Event: 196,804 Executing VM operation: RevokeBias
+Event: 196,804 Executing VM operation: RevokeBias done
+Event: 196,804 loading class io/netty/util/ResourceLeakDetector$DefaultResourceLeak
+Event: 196,804 loading class io/netty/util/ResourceLeakDetector$DefaultResourceLeak done
+
+
+Dynamic libraries:
+c4600000-c6e00000 rw-p 00000000 00:00 0 
+c6e00000-ec200000 ---p 00000000 00:00 0 
+ec200000-ed600000 rw-p 00000000 00:00 0 
+ed600000-100000000 ---p 00000000 00:00 0 
+100000000-1001c0000 rw-p 00000000 00:00 0 
+1001c0000-140000000 ---p 00000000 00:00 0 
+55cfed3b4000-55cfed3b5000 r--p 00000000 08:08 397358                     /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55cfed3b5000-55cfed3b6000 r-xp 00001000 08:08 397358                     /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55cfed3b6000-55cfed3b7000 r--p 00002000 08:08 397358                     /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55cfed3b7000-55cfed3b8000 r--p 00002000 08:08 397358                     /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55cfed3b8000-55cfed3b9000 rw-p 00003000 08:08 397358                     /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55cfeea4e000-55cfeea6f000 rw-p 00000000 00:00 0                          [heap]
+7f65bc000000-7f65bc021000 rw-p 00000000 00:00 0 
+7f65bc021000-7f65c0000000 ---p 00000000 00:00 0 
+7f65c38fc000-7f65c3afd000 rw-p 00000000 00:00 0 
+7f65c3afd000-7f65c3b00000 ---p 00000000 00:00 0 
+7f65c3b00000-7f65c4000000 rw-p 00000000 00:00 0 
+7f65c4000000-7f65c409b000 rw-p 00000000 00:00 0 
+7f65c409b000-7f65c8000000 ---p 00000000 00:00 0 
+7f65c8000000-7f65c8037000 rw-p 00000000 00:00 0 
+7f65c8037000-7f65cc000000 ---p 00000000 00:00 0 
+7f65cc000000-7f65cc021000 rw-p 00000000 00:00 0 
+7f65cc021000-7f65d0000000 ---p 00000000 00:00 0 
+7f65d0000000-7f65d00b6000 rw-p 00000000 00:00 0 
+7f65d00b6000-7f65d4000000 ---p 00000000 00:00 0 
+7f65d4000000-7f65d4214000 rw-p 00000000 00:00 0 
+7f65d4214000-7f65d8000000 ---p 00000000 00:00 0 
+7f65d8000000-7f65d8021000 rw-p 00000000 00:00 0 
+7f65d8021000-7f65dc000000 ---p 00000000 00:00 0 
+7f65dc000000-7f65dc0ac000 rw-p 00000000 00:00 0 
+7f65dc0ac000-7f65e0000000 ---p 00000000 00:00 0 
+7f65e0000000-7f65e0131000 rw-p 00000000 00:00 0 
+7f65e0131000-7f65e4000000 ---p 00000000 00:00 0 
+7f65e4000000-7f65e4021000 rw-p 00000000 00:00 0 
+7f65e4021000-7f65e8000000 ---p 00000000 00:00 0 
+7f65e8000000-7f65e8021000 rw-p 00000000 00:00 0 
+7f65e8021000-7f65ec000000 ---p 00000000 00:00 0 
+7f65ec000000-7f65ec021000 rw-p 00000000 00:00 0 
+7f65ec021000-7f65f0000000 ---p 00000000 00:00 0 
+7f65f0000000-7f65f0021000 rw-p 00000000 00:00 0 
+7f65f0021000-7f65f4000000 ---p 00000000 00:00 0 
+7f65f4000000-7f65f4021000 rw-p 00000000 00:00 0 
+7f65f4021000-7f65f8000000 ---p 00000000 00:00 0 
+7f65f80d7000-7f65f80da000 ---p 00000000 00:00 0 
+7f65f80da000-7f65f8559000 rw-p 00000000 00:00 0 
+7f65f8559000-7f65f85d9000 ---p 00000000 00:00 0 
+7f65f85d9000-7f65f85dc000 ---p 00000000 00:00 0 
+7f65f85dc000-7f65f88da000 rw-p 00000000 00:00 0 
+7f65f88da000-7f65f88dd000 ---p 00000000 00:00 0 
+7f65f88dd000-7f65f89db000 rw-p 00000000 00:00 0 
+7f65f89db000-7f65f89df000 r--p 00000000 08:08 398120                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libmanagement.so
+7f65f89df000-7f65f89e2000 r-xp 00004000 08:08 398120                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libmanagement.so
+7f65f89e2000-7f65f89e4000 r--p 00007000 08:08 398120                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libmanagement.so
+7f65f89e4000-7f65f89e5000 r--p 00008000 08:08 398120                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libmanagement.so
+7f65f89e5000-7f65f89e6000 rw-p 00009000 08:08 398120                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libmanagement.so
+7f65f89e6000-7f65f8a17000 rw-p 00000000 00:00 0 
+7f65f8a17000-7f65f8a1c000 r--p 00000000 08:08 398122                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnet.so
+7f65f8a1c000-7f65f8a2c000 r-xp 00005000 08:08 398122                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnet.so
+7f65f8a2c000-7f65f8a30000 r--p 00015000 08:08 398122                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnet.so
+7f65f8a30000-7f65f8a31000 r--p 00018000 08:08 398122                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnet.so
+7f65f8a31000-7f65f8a32000 rw-p 00019000 08:08 398122                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnet.so
+7f65f8a32000-7f65f8a39000 r--p 00000000 08:08 398123                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnio.so
+7f65f8a39000-7f65f8a41000 r-xp 00007000 08:08 398123                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnio.so
+7f65f8a41000-7f65f8a44000 r--p 0000f000 08:08 398123                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnio.so
+7f65f8a44000-7f65f8a45000 ---p 00012000 08:08 398123                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnio.so
+7f65f8a45000-7f65f8a46000 r--p 00012000 08:08 398123                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnio.so
+7f65f8a46000-7f65f8a47000 rw-p 00013000 08:08 398123                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libnio.so
+7f65f8a47000-7f65f8af2000 r--s 009d5000 08:0c 7488958                    /home/artus/Projects/grpc-experiments/grpc_vs_rest/java_grpc/target/original-test-1.0-SNAPSHOT.jar
+7f65f8af2000-7f65f8af3000 ---p 00000000 00:00 0 
+7f65f8af3000-7f65f8bf3000 rw-p 00000000 00:00 0 
+7f65f8bf3000-7f65f8bf6000 ---p 00000000 00:00 0 
+7f65f8bf6000-7f65f8cf4000 rw-p 00000000 00:00 0 
+7f65f8cf4000-7f65f8cf5000 ---p 00000000 00:00 0 
+7f65f8cf5000-7f65f8cf8000 ---p 00000000 00:00 0 
+7f65f8cf8000-7f65f8df5000 rw-p 00000000 00:00 0 
+7f65f8df5000-7f65f8df6000 ---p 00000000 00:00 0 
+7f65f8df6000-7f65f8df9000 ---p 00000000 00:00 0 
+7f65f8df9000-7f65f8ef6000 rw-p 00000000 00:00 0 
+7f65f8ef6000-7f65f8ef7000 ---p 00000000 00:00 0 
+7f65f8ef7000-7f65f8efa000 ---p 00000000 00:00 0 
+7f65f8efa000-7f65f8ff7000 rw-p 00000000 00:00 0 
+7f65f8ff7000-7f65f8ffa000 ---p 00000000 00:00 0 
+7f65f8ffa000-7f65f90f8000 rw-p 00000000 00:00 0 
+7f65f90f8000-7f65f93e0000 r--p 00000000 08:08 1717466                    /usr/lib/locale/locale-archive
+7f65f93e0000-7f65f93e3000 ---p 00000000 00:00 0 
+7f65f93e3000-7f65f94e1000 rw-p 00000000 00:00 0 
+7f65f94e1000-7f65f94e4000 ---p 00000000 00:00 0 
+7f65f94e4000-7f65f95e2000 rw-p 00000000 00:00 0 
+7f65f95e2000-7f65f95e3000 ---p 00000000 00:00 0 
+7f65f95e3000-7f65fc000000 rw-p 00000000 00:00 0 
+7f65fc000000-7f65fc021000 rw-p 00000000 00:00 0 
+7f65fc021000-7f6600000000 ---p 00000000 00:00 0 
+7f6600000000-7f6600021000 rw-p 00000000 00:00 0 
+7f6600021000-7f6604000000 ---p 00000000 00:00 0 
+7f6604000000-7f6604021000 rw-p 00000000 00:00 0 
+7f6604021000-7f6608000000 ---p 00000000 00:00 0 
+7f6608002000-7f660800c000 r--s 00117000 08:08 398149                     /usr/lib/jvm/java-8-openjdk/jre/lib/ext/localedata.jar
+7f660800c000-7f6608452000 rw-p 00000000 00:00 0 
+7f6608452000-7f6608623000 r--s 03c93000 08:08 398188                     /usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar
+7f6608623000-7f6609000000 rw-p 00000000 00:00 0 
+7f6609000000-7f6609290000 rwxp 00000000 00:00 0 
+7f6609290000-7f6618000000 ---p 00000000 00:00 0 
+7f6618000000-7f66183fb000 rw-p 00000000 00:00 0 
+7f66183fb000-7f661c000000 ---p 00000000 00:00 0 
+7f661c006000-7f661c00c000 r--s 000d3000 08:08 398172                     /usr/lib/jvm/java-8-openjdk/jre/lib/jfr.jar
+7f661c00c000-7f661c187000 rw-p 00000000 00:00 0 
+7f661c187000-7f661c188000 ---p 00000000 00:00 0 
+7f661c188000-7f661c288000 rw-p 00000000 00:00 0 
+7f661c288000-7f661c289000 ---p 00000000 00:00 0 
+7f661c289000-7f661c389000 rw-p 00000000 00:00 0 
+7f661c389000-7f661c38a000 ---p 00000000 00:00 0 
+7f661c38a000-7f661c48a000 rw-p 00000000 00:00 0 
+7f661c48a000-7f661c48b000 ---p 00000000 00:00 0 
+7f661c48b000-7f661c59f000 rw-p 00000000 00:00 0 
+7f661c59f000-7f661c6c9000 ---p 00000000 00:00 0 
+7f661c6c9000-7f661c6dd000 rw-p 00000000 00:00 0 
+7f661c6dd000-7f661c807000 ---p 00000000 00:00 0 
+7f661c807000-7f661c811000 rw-p 00000000 00:00 0 
+7f661c811000-7f661c8a6000 ---p 00000000 00:00 0 
+7f661c8a6000-7f661c8b2000 rw-p 00000000 00:00 0 
+7f661c8b2000-7f661cc67000 ---p 00000000 00:00 0 
+7f661cc67000-7f661cc6a000 r--p 00000000 08:08 398130                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f661cc6a000-7f661cc6e000 r-xp 00003000 08:08 398130                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f661cc6e000-7f661cc70000 r--p 00007000 08:08 398130                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f661cc70000-7f661cc71000 r--p 00008000 08:08 398130                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f661cc71000-7f661cc72000 rw-p 00009000 08:08 398130                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f661cc72000-7f661cc7f000 r--p 00000000 08:08 398111                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f661cc7f000-7f661cc95000 r-xp 0000d000 08:08 398111                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f661cc95000-7f661cc9c000 r--p 00023000 08:08 398111                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f661cc9c000-7f661cc9d000 r--p 00029000 08:08 398111                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f661cc9d000-7f661cc9e000 rw-p 0002a000 08:08 398111                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f661cc9e000-7f661cc9f000 rw-p 00000000 00:00 0 
+7f661cc9f000-7f661cca2000 r--p 00000000 08:08 1708924                    /usr/lib/librt-2.32.so
+7f661cca2000-7f661cca6000 r-xp 00003000 08:08 1708924                    /usr/lib/librt-2.32.so
+7f661cca6000-7f661cca8000 r--p 00007000 08:08 1708924                    /usr/lib/librt-2.32.so
+7f661cca8000-7f661cca9000 r--p 00008000 08:08 1708924                    /usr/lib/librt-2.32.so
+7f661cca9000-7f661ccaa000 rw-p 00009000 08:08 1708924                    /usr/lib/librt-2.32.so
+7f661ccaa000-7f661ccab000 ---p 00000000 00:00 0 
+7f661ccab000-7f661ccae000 ---p 00000000 00:00 0 
+7f661ccae000-7f661cdab000 rw-p 00000000 00:00 0 
+7f661cdab000-7f661cdba000 r--p 00000000 08:08 1708866                    /usr/lib/libm-2.32.so
+7f661cdba000-7f661ce56000 r-xp 0000f000 08:08 1708866                    /usr/lib/libm-2.32.so
+7f661ce56000-7f661ceef000 r--p 000ab000 08:08 1708866                    /usr/lib/libm-2.32.so
+7f661ceef000-7f661cef0000 r--p 00143000 08:08 1708866                    /usr/lib/libm-2.32.so
+7f661cef0000-7f661cef1000 rw-p 00144000 08:08 1708866                    /usr/lib/libm-2.32.so
+7f661cef1000-7f661d0e8000 r--p 00000000 08:08 398135                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f661d0e8000-7f661da1f000 r-xp 001f7000 08:08 398135                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f661da1f000-7f661dbd8000 r--p 00b2e000 08:08 398135                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f661dbd8000-7f661dc6f000 r--p 00ce6000 08:08 398135                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f661dc6f000-7f661dc98000 rw-p 00d7d000 08:08 398135                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f661dc98000-7f661dccd000 rw-p 00000000 00:00 0 
+7f661dccd000-7f661dcd4000 r--p 00000000 08:08 1708910                    /usr/lib/libpthread-2.32.so
+7f661dcd4000-7f661dce4000 r-xp 00007000 08:08 1708910                    /usr/lib/libpthread-2.32.so
+7f661dce4000-7f661dce9000 r--p 00017000 08:08 1708910                    /usr/lib/libpthread-2.32.so
+7f661dce9000-7f661dcea000 r--p 0001b000 08:08 1708910                    /usr/lib/libpthread-2.32.so
+7f661dcea000-7f661dceb000 rw-p 0001c000 08:08 1708910                    /usr/lib/libpthread-2.32.so
+7f661dceb000-7f661dcef000 rw-p 00000000 00:00 0 
+7f661dcef000-7f661dcf0000 r--p 00000000 08:08 1708854                    /usr/lib/libdl-2.32.so
+7f661dcf0000-7f661dcf2000 r-xp 00001000 08:08 1708854                    /usr/lib/libdl-2.32.so
+7f661dcf2000-7f661dcf3000 r--p 00003000 08:08 1708854                    /usr/lib/libdl-2.32.so
+7f661dcf3000-7f661dcf4000 r--p 00003000 08:08 1708854                    /usr/lib/libdl-2.32.so
+7f661dcf4000-7f661dcf5000 rw-p 00004000 08:08 1708854                    /usr/lib/libdl-2.32.so
+7f661dcf5000-7f661dcf8000 r--p 00000000 08:08 1741485                    /usr/lib/libz.so.1.2.11
+7f661dcf8000-7f661dd06000 r-xp 00003000 08:08 1741485                    /usr/lib/libz.so.1.2.11
+7f661dd06000-7f661dd0c000 r--p 00011000 08:08 1741485                    /usr/lib/libz.so.1.2.11
+7f661dd0c000-7f661dd0d000 ---p 00017000 08:08 1741485                    /usr/lib/libz.so.1.2.11
+7f661dd0d000-7f661dd0e000 r--p 00017000 08:08 1741485                    /usr/lib/libz.so.1.2.11
+7f661dd0e000-7f661dd0f000 rw-p 00018000 08:08 1741485                    /usr/lib/libz.so.1.2.11
+7f661dd0f000-7f661dd35000 r--p 00000000 08:08 1708845                    /usr/lib/libc-2.32.so
+7f661dd35000-7f661de82000 r-xp 00026000 08:08 1708845                    /usr/lib/libc-2.32.so
+7f661de82000-7f661dece000 r--p 00173000 08:08 1708845                    /usr/lib/libc-2.32.so
+7f661dece000-7f661ded1000 r--p 001be000 08:08 1708845                    /usr/lib/libc-2.32.so
+7f661ded1000-7f661ded4000 rw-p 001c1000 08:08 1708845                    /usr/lib/libc-2.32.so
+7f661ded4000-7f661ded8000 rw-p 00000000 00:00 0 
+7f661deda000-7f661dee2000 rw-s 00000000 00:30 188                        /tmp/hsperfdata_artus/18365
+7f661dee2000-7f661dee5000 r--p 00000000 08:08 1708894                    /usr/lib/libnss_files-2.32.so
+7f661dee5000-7f661deec000 r-xp 00003000 08:08 1708894                    /usr/lib/libnss_files-2.32.so
+7f661deec000-7f661deee000 r--p 0000a000 08:08 1708894                    /usr/lib/libnss_files-2.32.so
+7f661deee000-7f661deef000 r--p 0000b000 08:08 1708894                    /usr/lib/libnss_files-2.32.so
+7f661deef000-7f661def0000 rw-p 0000c000 08:08 1708894                    /usr/lib/libnss_files-2.32.so
+7f661def0000-7f661def7000 rw-p 00000000 00:00 0 
+7f661def7000-7f661def8000 r--p 00000000 00:00 0 
+7f661def8000-7f661defd000 r--p 00000000 08:08 398129                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f661defd000-7f661df04000 r-xp 00005000 08:08 398129                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f661df04000-7f661df06000 r--p 0000c000 08:08 398129                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f661df06000-7f661df07000 ---p 0000e000 08:08 398129                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f661df07000-7f661df09000 r--p 0000e000 08:08 398129                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f661df09000-7f661df0a000 rw-p 00010000 08:08 398129                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f661df0a000-7f661df0d000 r--p 00000000 08:08 397471                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f661df0d000-7f661df16000 r-xp 00003000 08:08 397471                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f661df16000-7f661df19000 r--p 0000c000 08:08 397471                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f661df19000-7f661df1a000 r--p 0000e000 08:08 397471                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f661df1a000-7f661df1b000 rw-p 0000f000 08:08 397471                     /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f661df1b000-7f661df1d000 rw-p 00000000 00:00 0 
+7f661df1d000-7f661df1f000 r--p 00000000 08:08 1708833                    /usr/lib/ld-2.32.so
+7f661df1f000-7f661df40000 r-xp 00002000 08:08 1708833                    /usr/lib/ld-2.32.so
+7f661df40000-7f661df49000 r--p 00023000 08:08 1708833                    /usr/lib/ld-2.32.so
+7f661df49000-7f661df4a000 r--p 0002b000 08:08 1708833                    /usr/lib/ld-2.32.so
+7f661df4a000-7f661df4c000 rw-p 0002c000 08:08 1708833                    /usr/lib/ld-2.32.so
+7ffe624a9000-7ffe624ca000 rw-p 00000000 00:00 0                          [stack]
+7ffe6255b000-7ffe6255f000 r--p 00000000 00:00 0                          [vvar]
+7ffe6255f000-7ffe62561000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+java_command: grpc.experiments.server.GrpcServer
+java_class_path (initial): target/test-1.0-SNAPSHOT.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk/
+PATH=/home/artus/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/artus/Apps/run/:/home/linuxbrew/.linuxbrew/bin
+SHELL=/usr/bin/fish
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xaf74c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xaf74c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x944a60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x944a60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x944a60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x944a60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x944840], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x944d00], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x944d00], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x944d00], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x944d00], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=ManjaroLinux
+DISTRIB_RELEASE=20.2.1
+DISTRIB_CODENAME=Nibia
+DISTRIB_DESCRIPTION="Manjaro Linux"
+
+uname:Linux 5.10.7-3-MANJARO #1 SMP PREEMPT Fri Jan 15 21:11:34 UTC 2021 x86_64
+libc:glibc 2.32 NPTL 2.32 
+rlimit: STACK 8192k, CORE infinity, NPROC 15129, NOFILE 524288, AS infinity
+load average:1,84 1,97 1,82
+
+/proc/meminfo:
+MemTotal:        3900544 kB
+MemFree:          405096 kB
+MemAvailable:     532000 kB
+Buffers:           26892 kB
+Cached:           416068 kB
+SwapCached:       150128 kB
+Active:           836900 kB
+Inactive:        2078720 kB
+Active(anon):     623172 kB
+Inactive(anon):  1983156 kB
+Active(file):     213728 kB
+Inactive(file):    95564 kB
+Unevictable:       16856 kB
+Mlocked:              64 kB
+SwapTotal:       8787964 kB
+SwapFree:        7804056 kB
+Dirty:             11964 kB
+Writeback:             0 kB
+AnonPages:       2397300 kB
+Mapped:           245212 kB
+Shmem:            146544 kB
+KReclaimable:      50360 kB
+Slab:             126408 kB
+SReclaimable:      50360 kB
+SUnreclaim:        76048 kB
+KernelStack:       13264 kB
+PageTables:        31272 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    10738236 kB
+Committed_AS:    7795632 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       40700 kB
+VmallocChunk:          0 kB
+Percpu:             2032 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      247796 kB
+DirectMap2M:     3819520 kB
+DirectMap1G:           0 kB
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-3
+cpu_memory_nodes: 0
+active_processor_count: 4
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -1
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 2924679168
+memory_max_usage_in_bytes: 3309662208
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 142 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0xde
+cpu MHz		: 3100.195
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+vmx flags	: vnmi preemption_timer invvpid ept_x_only ept_ad ept_1gb flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest ple pml ept_mode_based_exec
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds
+bogomips	: 5401.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0xde
+cpu MHz		: 3100.022
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+vmx flags	: vnmi preemption_timer invvpid ept_x_only ept_ad ept_1gb flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest ple pml ept_mode_based_exec
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds
+bogomips	: 5401.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0xde
+cpu MHz		: 3100.022
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+vmx flags	: vnmi preemption_timer invvpid ept_x_only ept_ad ept_1gb flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest ple pml ept_mode_based_exec
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds
+bogomips	: 5401.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 142
+model name	: Intel(R) Core(TM) i5-7200U CPU @ 2.50GHz
+stepping	: 9
+microcode	: 0xde
+cpu MHz		: 3100.087
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+vmx flags	: vnmi preemption_timer invvpid ept_x_only ept_ad ept_1gb flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest ple pml ept_mode_based_exec
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds
+bogomips	: 5401.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 3900544k(405096k free), swap 8787964k(7804056k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.275-b01) for linux-amd64 JRE (1.8.0_275-b01), built on Jan 10 2021 13:38:57 by "builduser" with gcc 10.2.0
+
+time: Wed Jan 27 09:15:34 2021
+timezone: -03
+elapsed time: 196.864283 seconds (0d 0h 3m 16s)
+

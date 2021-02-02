@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package grpc.experiments;
+
+service Test {
+  rpc testUnary (TestRequest) returns (TestResponse) {}
+  rpc testStream (stream TestRequest) returns (stream TestResponse) {}
+}
+
+message TestRequest {
+  string  field1 = 1;
+  string  field2 = 2;
+  string  field3 = 3;
+  int32   field4 = 4;
+  int64   field5 = 5;
+  float   field6 = 6;
+  double  field7 = 7;
+  bool field8 = 8;
+}
+
+message TestResponse {
+  string  field1 = 1;
+  string  field2 = 2;
+  string  field3 = 3;
+  int32   field4 = 4;
+  int64   field5 = 5;
+  float   field6 = 6;
+  double  field7 = 7;
+  bool field8 = 8;
+}
