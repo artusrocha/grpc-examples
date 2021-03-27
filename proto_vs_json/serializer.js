@@ -1,35 +1,91 @@
 const fs = require("fs")
-const proto = require("./user_pb");
+const proto = require("./user_pb")
 
-const jsonStr = '{"gender":"female","name":{"title":"Miss","first":"Louane","last":"Vidal"},"location":{"street":{"number":2479,"name":"Place du 8 Février 1962"},"city":"Avignon","state":"Vendée","country":"France","postcode":78276,"coordinates":{"latitude":"2.0565","longitude":"95.2422"},"timezone":{"offset":"+1:00","description":"Brussels, Copenhagen, Madrid, Paris"}},"email":"louane.vidal@example.com","login":{"uuid":"9f07341f-c7e6-45b7-bab0-af6de5a4582d","username":"angryostrich988","password":"r2d2","salt":"B5ywSDUM","md5":"afce5fbe8f32bcec1a918f75617ab654","sha1":"1a5b1afa1d9913cf491af64ce78946d18fea6b04","sha256":"0124895aa1e6e5fb0596fad4c413602e0922e8a8c2dc758bbdb3fa070ad25a07"},"dob":{"date":"1966-06-26T11:50:25.558Z","age":55},"registered":{"date":"2016-08-11T06:51:52.086Z","age":5},"phone":"02-62-35-18-98","cell":"06-07-80-83-11","id":{"name":"INSEE","value":"2NNaN01776236 16"},"picture":{"large":"https://randomuser.me/api/portraits/women/88.jpg","medium":"https://randomuser.me/api/portraits/med/women/88.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/88.jpg"},"nat":"FR"}'
-userOrig = JSON.parse(jsonStr)
+const jsonStr = fs.readFileSync('./random_users.json')
+const randomUsers = JSON.parse(jsonStr).results
 
-const user = new proto.User()
-user.setEmail(userOrig.email)
+sizes = randomUsers.map( (userOrig, i) => {
+    const user = mapUser( userOrig )
+    fs.writeFile('./data/pbdata/'+i+'.pbdata', user.serializeBinary(), "binary", function (err) {
+        if (err) console.log("Error bin", err);
+    })
+    fs.writeFile('./data/json/'+i+'.json', JSON.stringify( user.toObject() ), function (err) {
+        if (err) console.log("Error json", err);
+    })
+    return {
+        item: i,
+        json_size: Buffer.byteLength( JSON.stringify( user.toObject() ) ),
+        proto_size: Buffer.byteLength(user.serializeBinary() )
+    }
+})
 
-const name = new proto.Name()
-name.setTitle( userOrig.name.title )
-name.setFirst( userOrig.name.first )
-name.setLast( userOrig.name.last )
-user.setName( name )
-console.log( user.serializeBinary().length )
+console.log(sizes)
 
-const login = new proto.Login()
-login.setUsername( userOrig.login.username )
-login.setUuid( Buffer.from(userOrig.login.uuid.replace(/-/g,''), 'hex') )
-user.setLogin(login)
+function mapUser( userOrig ) {
+    const user = new proto.User() 
+    user.setGender(userOrig.gender)
+    user.setEmail(userOrig.email)
+    user.setName( mapName(userOrig.name) )
+    user.setLogin( mapLogin( userOrig.login ) )
+    user.setPicture( mapPicture(userOrig.picture) )
+    user.setLocation( mapLocation(userOrig.location) )
+    user.setIsactive( Math.random() < 0.5 )
+    return user
+}
 
-const picture = new proto.Picture()
-user.setPicture(picture)
+function mapName( origName ) {
+    const name = new proto.Name()
+    name.setTitle( origName.title )
+    name.setFirst( origName.first )
+    name.setLast(  origName.last )
+    return name
+}
 
-const location = new proto.Location()
-user.setLocation(location)
+function mapLogin( origLogin ) {
+    const login = new proto.Login()
+    login.setUsername( origLogin.username )
+    login.setUuid( Buffer.from(origLogin.uuid.replace(/-/g,''), 'hex') )
+    login.setIsloggedin( Math.random() < 0.5 )
+    return login
+}
 
+function mapPicture( origPicture ) {
+    const picture = new proto.Picture()
+    picture.setLarge( origPicture.large )
+    picture.setMedium( origPicture.medium )
+    picture.setThumbnail( origPicture.thumbnail )
+    return picture
+}
 
-//console.log( user )
-//console.log( user.toString() )
-//console.log( user.toObject() )
-console.log( JSON.stringify( user.toObject() ).length )
-console.log( user.serializeBinary().length )
+function mapLocation( locationOrig ) {
+    const location = new proto.Location()
+    location.setCity( locationOrig.city )
+    location.setState( locationOrig.state )
+    location.setCountry( locationOrig.country )
+    location.setPostcode( locationOrig.postcode )
+    location.setStreet( mapStreet(locationOrig.street) )
+    location.setCoordinates( mapCoordinate( locationOrig.coordinates ) )
+    location.setTimezone( mapTZ( locationOrig.timezone ) )
+    return location
+}
 
-//  proto.User.deserializeBinary(bytes);
+function mapStreet( streetOrig ) {
+    const street = new proto.Street()
+    street.setNumber( streetOrig.number )
+    street.setName( streetOrig.name )
+    return street
+}
+
+function mapCoordinate( coordinatesOrig ) {
+    const geo = new proto.Geo()
+    geo.setLatitude( coordinatesOrig.latitude )
+    geo.setLongitude( coordinatesOrig.longitude )
+    return geo
+}
+
+function mapTZ( tzOrig ) {
+    const tz = new proto.TZ()
+    tz.setOffset( tzOrig.offset )
+    tz.setDescription( tzOrig.description )
+    return tz
+}

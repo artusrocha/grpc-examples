@@ -9,6 +9,7 @@ message User {
     Login login = 4;
     Picture picture = 5;
     Location location = 6;
+    bool isactive = 7;
 }
 
 message Name {
@@ -22,7 +23,7 @@ message Location {
     string city = 2;
     string state = 3;
     string country = 4;
-    int32 postcode = 5;
+    string postcode = 5;
     Geo coordinates = 6;
     TZ timezone = 7;
 }
@@ -45,6 +46,7 @@ message TZ {
 message Login {
     string username = 1;
     bytes uuid = 2;
+    bool isloggedin = 3;
 }
 
 message Picture {

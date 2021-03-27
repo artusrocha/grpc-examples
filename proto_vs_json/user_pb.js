@@ -71,7 +71,8 @@ proto.my.system.person.User.toObject = function(includeInstance, msg) {
     email: jspb.Message.getFieldWithDefault(msg, 3, ""),
     login: (f = msg.getLogin()) && proto.my.system.person.Login.toObject(includeInstance, f),
     picture: (f = msg.getPicture()) && proto.my.system.person.Picture.toObject(includeInstance, f),
-    location: (f = msg.getLocation()) && proto.my.system.person.Location.toObject(includeInstance, f)
+    location: (f = msg.getLocation()) && proto.my.system.person.Location.toObject(includeInstance, f),
+    isactive: jspb.Message.getFieldWithDefault(msg, 7, false)
   };
 
   if (includeInstance) {
@@ -135,6 +136,10 @@ proto.my.system.person.User.deserializeBinaryFromReader = function(msg, reader) 
       var value = new proto.my.system.person.Location;
       reader.readMessage(value,proto.my.system.person.Location.deserializeBinaryFromReader);
       msg.setLocation(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsactive(value);
       break;
     default:
       reader.skipField();
@@ -209,6 +214,13 @@ proto.my.system.person.User.serializeBinaryToWriter = function(message, writer) 
       6,
       f,
       proto.my.system.person.Location.serializeBinaryToWriter
+    );
+  }
+  f = message.getIsactive();
+  if (f) {
+    writer.writeBool(
+      7,
+      f
     );
   }
 };
@@ -361,6 +373,23 @@ proto.my.system.person.User.prototype.clearLocation = function() {
  */
 proto.my.system.person.User.prototype.hasLocation = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional bool isactive = 7;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.my.system.person.User.prototype.getIsactive = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 7, false));
+};
+
+
+/** @param {boolean} value */
+proto.my.system.person.User.prototype.setIsactive = function(value) {
+  jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
@@ -611,7 +640,7 @@ proto.my.system.person.Location.toObject = function(includeInstance, msg) {
     city: jspb.Message.getFieldWithDefault(msg, 2, ""),
     state: jspb.Message.getFieldWithDefault(msg, 3, ""),
     country: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    postcode: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    postcode: jspb.Message.getFieldWithDefault(msg, 5, ""),
     coordinates: (f = msg.getCoordinates()) && proto.my.system.person.Geo.toObject(includeInstance, f),
     timezone: (f = msg.getTimezone()) && proto.my.system.person.TZ.toObject(includeInstance, f)
   };
@@ -668,7 +697,7 @@ proto.my.system.person.Location.deserializeBinaryFromReader = function(msg, read
       msg.setCountry(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = /** @type {string} */ (reader.readString());
       msg.setPostcode(value);
       break;
     case 6:
@@ -740,8 +769,8 @@ proto.my.system.person.Location.serializeBinaryToWriter = function(message, writ
     );
   }
   f = message.getPostcode();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f.length > 0) {
+    writer.writeString(
       5,
       f
     );
@@ -841,17 +870,17 @@ proto.my.system.person.Location.prototype.setCountry = function(value) {
 
 
 /**
- * optional int32 postcode = 5;
- * @return {number}
+ * optional string postcode = 5;
+ * @return {string}
  */
 proto.my.system.person.Location.prototype.getPostcode = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
-/** @param {number} value */
+/** @param {string} value */
 proto.my.system.person.Location.prototype.setPostcode = function(value) {
-  jspb.Message.setProto3IntField(this, 5, value);
+  jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -1470,7 +1499,8 @@ proto.my.system.person.Login.prototype.toObject = function(opt_includeInstance) 
 proto.my.system.person.Login.toObject = function(includeInstance, msg) {
   var f, obj = {
     username: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    uuid: msg.getUuid_asB64()
+    uuid: msg.getUuid_asB64(),
+    isloggedin: jspb.Message.getFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1515,6 +1545,10 @@ proto.my.system.person.Login.deserializeBinaryFromReader = function(msg, reader)
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setUuid(value);
       break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsloggedin(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1555,6 +1589,13 @@ proto.my.system.person.Login.serializeBinaryToWriter = function(message, writer)
   if (f.length > 0) {
     writer.writeBytes(
       2,
+      f
+    );
+  }
+  f = message.getIsloggedin();
+  if (f) {
+    writer.writeBool(
+      3,
       f
     );
   }
@@ -1612,6 +1653,23 @@ proto.my.system.person.Login.prototype.getUuid_asU8 = function() {
 /** @param {!(string|Uint8Array)} value */
 proto.my.system.person.Login.prototype.setUuid = function(value) {
   jspb.Message.setProto3BytesField(this, 2, value);
+};
+
+
+/**
+ * optional bool isloggedin = 3;
+ * Note that Boolean fields may be set to 0/1 when serialized from a Java server.
+ * You should avoid comparisons like {@code val === true/false} in those cases.
+ * @return {boolean}
+ */
+proto.my.system.person.Login.prototype.getIsloggedin = function() {
+  return /** @type {boolean} */ (jspb.Message.getFieldWithDefault(this, 3, false));
+};
+
+
+/** @param {boolean} value */
+proto.my.system.person.Login.prototype.setIsloggedin = function(value) {
+  jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
