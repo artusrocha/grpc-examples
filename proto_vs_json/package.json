@@ -1,9 +1,10 @@
 {
     "name": "proto_vs_json",
     "version": "0.1.0",
-    "description": "Test serialization with protobuf and json",
+    "description": "Testing serialization with protobuf and json",
     "scripts": {
-        "build-proto": "protoc --js_out=import_style=commonjs,binary:./ --plugin=protoc-gen-grpc=node_modules/grpc-tools/bin/grpc_node_plugin user.proto"
+        "test-user": "node users/user_serializer.js",
+        "build-user-proto": "protoc --js_out=import_style=commonjs,binary:./ --plugin=protoc-gen-grpc=node_modules/grpc-tools/bin/grpc_node_plugin users/user.proto"
     },
     "keywords": [],
     "author": "Artus Rocha",
