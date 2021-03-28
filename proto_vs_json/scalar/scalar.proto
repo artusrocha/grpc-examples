@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package my.system.scalar;
+
+message Scalar {
+    bool boolean1 = 1;
+    bool boolean2 = 2;
+    float float1 = 3;
+    float float2 = 4;
+    uint32 uint1 = 5;
+    uint32 uint2 = 6;
+    int32 int1 = 7;
+    int32 int2 = 8;
+}
